@@ -1,0 +1,15 @@
+.controlsBlock {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+}
+
+/* .last {
+    background-color: black;
+} */
+
+/* .last {
+    grid-column: 1 / 4;
+    grid-row: 1 / 3;
+} */
