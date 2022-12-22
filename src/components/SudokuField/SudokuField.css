@@ -4,8 +4,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color:  #222;
-    /* color:  #616161; */
+    color:  #616161;
     cursor: pointer;
     background: #fff;
     width: 3rem;
@@ -13,10 +12,21 @@
     font-size: 2rem;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cell[readonly] {
+    color:  #222;
+}
+
 .cell:focus {
     background-color: rgba(0,109,240,0.16);
     border: 2px solid #000000;;
     transition: .35s;
+    color:  #616161;
 }
 
 .cell:nth-child(3), .cell:nth-child(6) {

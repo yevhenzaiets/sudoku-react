@@ -4,6 +4,7 @@ import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import generator from "sudoku";
 import { useState } from 'react';
+import produce from 'immer';
 
 window.generator = generator;
 
@@ -26,26 +27,30 @@ function generateSudoku() {
       row.cols.push(col);
     }
     result.rows.push(row);
-    // console.log(row)
   }
-  // console.log(result);
   return result;
 }
-
-generateSudoku();
-
 
 
 function App(props) {
   const [sudoku, setSudoku] = useState(generateSudoku);
 
-  return <div className="wrapper">
-    <div className="container">
-      <Header/>
-      <Main sudoku={sudoku} сlassName="main"/>
-      <Footer/>
-    </div>
+  const handleChange = e => {
+    setSudoku(produce(sudoku => {
+      sudoku.rows[e.row].cols[e.col].value = e.value;
+      // console.log(sudoku.rows[e.row].cols[e.col].value)
+    }));
+  }
+
+  return(
+    <div className="wrapper">
+      <div className="container">
+        <Header/>
+        <Main сlassName="main" sudoku={sudoku} onChange={handleChange}/>
+        <Footer/>
+      </div>
   </div>
+  )
 }
 
 export default App;
